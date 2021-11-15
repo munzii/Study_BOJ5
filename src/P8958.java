@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class P1546 {
+public class P8958 {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -13,32 +13,33 @@ public class P1546 {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		int n = Integer.parseInt(st.nextToken());
-		float[] arr = new float[n];
-		float max = 0;
-		float sum = 0;
-		float avg = 0;
-		
-		st = new StringTokenizer(br.readLine(), " ");
-		for(int i=0; i<n; i++) {
-			arr[i] = Float.parseFloat(st.nextToken());
-			
-			if(max<arr[i])
-				max=arr[i];
-		}
+		String[] arr = new String[n];
+		int sum =0;
+		int count =0;
 		
 		for(int i=0; i<n; i++) {
-			arr[i] = arr[i]/max*100;
-			sum += arr[i];
+			arr[i] = br.readLine();
+			sum=0;
+			count =0;
+
+			for(int j=0; j<arr[i].length(); j++) {
+				
+				if(arr[i].charAt(j)=='o') {
+					count++;
+				}
+				else {
+					count=0;
+				}
+			}
+			sum = sum + count;
 		}
 		
-		avg=sum/n;
-		
-		bw.write(avg + "\n");
+		bw.write(sum + "\n");
 		
 		br.close();
 		bw.flush();
 		bw.close();
-		
+
 	}
 
 }
