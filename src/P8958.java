@@ -3,7 +3,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.StringTokenizer;
 
 public class P8958 {
 
@@ -11,30 +10,33 @@ public class P8958 {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		int n = Integer.parseInt(st.nextToken());
+		int n = Integer.parseInt(br.readLine());
 		String[] arr = new String[n];
-		int sum =0;
-		int count =0;
+		char[] ans;
+		int count=0;
+		int sum=0;
 		
 		for(int i=0; i<n; i++) {
 			arr[i] = br.readLine();
+		}
+		
+		for(int i=0; i<n; i++) {
+			count=0;
 			sum=0;
-			count =0;
-
-			for(int j=0; j<arr[i].length(); j++) {
-				
-				if(arr[i].charAt(j)=='o') {
-					count++;
+			
+			ans=arr[i].toCharArray();
+			
+			for(int j=0; j<n; j++) {
+				if(ans[j]=='O') {
+					sum+=(count+=1);
 				}
 				else {
 					count=0;
 				}
 			}
-			sum = sum + count;
+			bw.write(sum+ "\n");
 		}
-		
-		bw.write(sum + "\n");
+
 		
 		br.close();
 		bw.flush();
