@@ -12,31 +12,21 @@ public class P8958 {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int n = Integer.parseInt(br.readLine());
 		String[] arr = new String[n];
-		char[] ans;
-		int count=0;
-		int sum=0;
 		
 		for(int i=0; i<n; i++) {
 			arr[i] = br.readLine();
-		}
-		
-		for(int i=0; i<n; i++) {
-			count=0;
-			sum=0;
-			
-			ans=arr[i].toCharArray();
-			
-			for(int j=0; j<n; j++) {
-				if(ans[j]=='O') {
-					sum+=(count+=1);
-				}
-				else {
+			int count=0;
+			int sum=0;
+			for(int j=0; j<arr[i].length(); j++) {
+				if(arr[i].charAt(j)=='O')
+					sum+= ++count;
+				else
 					count=0;
-				}
 			}
-			bw.write(sum+ "\n");
+			bw.write(String.valueOf(sum)+ "\n");
+			sum=0;
+			count=0;
 		}
-
 		
 		br.close();
 		bw.flush();
