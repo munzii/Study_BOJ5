@@ -18,18 +18,19 @@ public class P4344 {
 		for(int i=0; i<n; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			int p = Integer.parseInt(st.nextToken());
-			double[] s = new double[p];
-			int sum =0;
+			int[] arr = new int[p];
+			double sum =0;
 			
 			for(int j=0; j<p; j++) {
-				s[j] = Double.parseDouble(st.nextToken());
-				sum+= s[j];
+				int s = Integer.parseInt(st.nextToken());
+				arr[j] = s;
+				sum += s;
 			}
 			int count =0;
 			double avg = (double)sum/(double)p;
 			
 			for(int k=0; k<n; k++) {
-				if(avg<s[k]) {
+				if(avg<arr[k]) {
 					count++;
 				}
 			}
